@@ -1,6 +1,7 @@
 import os, sys
 from text_netscan import netscan
 import files as files
+from checkip import ipa
 # Variables
 
 inserta = "Inserta un número: "
@@ -12,8 +13,14 @@ def menu():
     os.system('clear') # NOTA para windows tienes que cambiar clear por cls
     netscan()
     print ("------------------------------------------------------------")
-    print ("            SELECIONA LO QUE QUIERES DEL MENU               ") 
+    print ("                  BIENVENIDO A NetScan                      ") 
     print ("------------------------------------------------------------")
+    print ("............................................................")
+    print ("                 CONFIGURACIONES ACTUALES                   ")
+    print ("")
+    comprobar()
+    ipa()
+    print ("............................................................")
     print ("")
     print ("\t1 - IP o Rango de IP's a escanear")
     print ("\t2 - Mas Cosas")
@@ -27,6 +34,12 @@ def menu_ip():
     print ("------------------------------------------------------------")
     print ("                 CONFIGURACIÓN DE NETSCAN                   ")
     print ("------------------------------------------------------------")
+    print ("............................................................")
+    print ("                 CONFIGURACIONES ACTUALES                   ")
+    print ("")
+    comprobar()
+    ipa()
+    print ("............................................................")
     print ("")
     print ("\t1 - Establecer una IP o Rango de IP's")
     print ("\t2 - Consultar la IP o Rango de IP's establecidos")
@@ -43,8 +56,8 @@ def guardar():
 
 def ver():
     r = open('cosas.txt','r')
-    print (r.readline(30))
-    print (r.readline(30))
+    print ("IP configurada para el escaneo " + r.readline(30))
+    #print (r.readline(30))
     r.close()
 
 def comprobar():
@@ -53,7 +66,7 @@ def comprobar():
     contenido = f.read()
     if contenido == '':
         print("")
-        print("******* UPSSS no tines nada configurado, ponn 1 para configurar una IP y una mascara de Red *******")
+        print("No tienes nada configurado aun.")
         print("")
     else:
        ver()
@@ -97,8 +110,8 @@ try:
     while True:
         # Mostramos el menu principal
         menu()
-
         opcionMenu = input(inserta)
+        
      
         if opcionMenu=="1":
             while True:
